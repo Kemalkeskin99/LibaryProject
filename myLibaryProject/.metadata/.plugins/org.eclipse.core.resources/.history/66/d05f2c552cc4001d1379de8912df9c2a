@@ -1,0 +1,31 @@
+package kemalkeskin.rentABook.webApi;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import kemalkeskin.rentABook.business.abstracts.RentBookService;
+import kemalkeskin.rentABook.business.responses.rentbook.GetAllRentBookResponse;
+import kemalkeskin.rentABook.business.responses.rentbook.GetByIdRentBookResponse;
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping("/api/rentbooks")
+@AllArgsConstructor
+public class RentBooksController {
+
+	private RentBookService rentBookService;
+	
+	@GetMapping
+	public List<GetAllRentBookResponse> getAll(){
+		return this.rentBookService.getAll();
+	}
+	
+	@GetMapping("/{id}")
+	public GetByIdRentBookResponse getById(@PathVariable int id) {
+		return this.rentBookService.getById(id);
+	}
+}

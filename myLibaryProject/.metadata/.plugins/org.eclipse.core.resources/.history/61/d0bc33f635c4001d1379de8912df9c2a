@@ -1,0 +1,10 @@
+package kemalkeskin.rentABook.business.abstracts;
+
+import java.util.List;
+
+import kemalkeskin.rentABook.business.responses.publisher.GetAllPublisherResponse;
+
+public interface PublisherService {
+
+	List<GetAllPublisherResponse>getAll();
+}

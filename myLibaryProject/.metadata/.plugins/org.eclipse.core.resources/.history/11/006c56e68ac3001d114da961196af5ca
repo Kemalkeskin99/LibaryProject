@@ -1,0 +1,10 @@
+package kemalkeskin.rentABook.business.responses.rentbook;
+
+public class GetByIdRentBookResponse {
+	private int id;
+	private int userId;
+	private String bookName;
+	private String rentDate;
+	private String deliveryDate;
+
+}

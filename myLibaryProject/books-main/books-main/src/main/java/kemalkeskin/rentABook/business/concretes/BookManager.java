@@ -1,0 +1,85 @@
+package kemalkeskin.rentABook.business.concretes;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import kemalkeskin.rentABook.business.abstracts.BookService;
+import kemalkeskin.rentABook.business.requests.book.CreateBookRequest;
+import kemalkeskin.rentABook.business.requests.book.UpdateBookRequest;
+import kemalkeskin.rentABook.business.responses.book.GetAllBookResponse;
+import kemalkeskin.rentABook.business.responses.book.GetByBookNameResponse;
+import kemalkeskin.rentABook.business.responses.book.GetByIdBookResponse;
+import kemalkeskin.rentABook.business.rules.books.BookBusinessRules;
+import kemalkeskin.rentABook.core.mapper.ModelMapperService;
+import kemalkeskin.rentABook.dataAccess.abstracts.BookRepository;
+import kemalkeskin.rentABook.entitities.concretes.Book;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class BookManager implements BookService {
+	
+	private BookRepository bookRepository;
+	private ModelMapperService modelMapperService;
+	private BookBusinessRules bookBusinessRules;
+	
+	
+	@Override
+	public List<GetAllBookResponse> getAll() {
+		List<Book> books=bookRepository.findAll();
+		List<GetAllBookResponse>getAllBookResponses=books.stream().map(book->this.modelMapperService.forResponse().map(book, GetAllBookResponse.class)).collect(Collectors.toList());
+		return getAllBookResponses;
+	}
+	
+	@Override
+	public GetByIdBookResponse getById(int id) {
+		Book book=bookRepository.findById(id).orElseThrow();
+		GetByIdBookResponse getByIdBookResponse=modelMapperService.forResponse().map(book, GetByIdBookResponse.class);
+		return getByIdBookResponse;
+	}
+
+	
+	
+	
+	@Override
+	public void add(CreateBookRequest createBookRequest) {
+		this.bookBusinessRules.repeatName(createBookRequest.getName());
+		Book book = this.modelMapperService.forRequest().map(createBookRequest, Book.class);
+		this.bookRepository.save(book);
+	}
+
+	@Override
+	public void update(int id,UpdateBookRequest updateBookRequest) {
+	
+		this.bookBusinessRules.IdExists(id);
+		Book bookupdate = this.modelMapperService.forRequest().map(updateBookRequest, Book.class);
+		this.bookRepository.save(bookupdate);
+
+	}
+
+	@Override
+	public void delete(int id) {
+		this.bookBusinessRules.IdExists(id);
+		this.bookRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public GetByBookNameResponse getByBookName(String bookName) {
+		
+		Book book=this.bookRepository.getByBookName(bookName);
+		GetByBookNameResponse getByBookNameResponse=modelMapperService.forResponse().map(book, GetByBookNameResponse.class);
+		return getByBookNameResponse;
+	}
+
+
+
+
+
+	
+	
+
+}

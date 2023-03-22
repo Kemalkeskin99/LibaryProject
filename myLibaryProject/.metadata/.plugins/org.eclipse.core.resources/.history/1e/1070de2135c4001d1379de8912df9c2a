@@ -1,0 +1,5 @@
+package kemalkeskin.rentABook.business.responses.publisher;
+
+public class GetByIdPublisherResponse {
+
+}

@@ -1,0 +1,14 @@
+package kemalkeskin.rentABook.business.abstracts;
+
+import java.util.List;
+
+import kemalkeskin.rentABook.business.requests.rentbook.CreateRentBookRequest;
+import kemalkeskin.rentABook.business.responses.rentbook.GetAllRentBookResponse;
+import kemalkeskin.rentABook.business.responses.rentbook.GetByIdRentBookResponse;
+
+public interface RentBookService {
+
+	List<GetAllRentBookResponse>getAll();
+	GetByIdRentBookResponse getById(int id);
+	void add(CreateRentBookRequest createRentBookRequest);
+}

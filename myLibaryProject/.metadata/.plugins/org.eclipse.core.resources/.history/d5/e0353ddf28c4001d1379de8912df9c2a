@@ -1,0 +1,5 @@
+package kemalkeskin.rentABook.business.requests.rentbook;
+
+public class CreateRentBookRequest {
+
+}

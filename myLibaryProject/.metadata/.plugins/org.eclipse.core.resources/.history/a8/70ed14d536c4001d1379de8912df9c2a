@@ -1,0 +1,22 @@
+package kemalkeskin.rentABook.webApi;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import kemalkeskin.rentABook.business.abstracts.PublisherService;
+import kemalkeskin.rentABook.business.responses.publisher.GetAllPublisherResponse;
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping("/api/publisher")
+@AllArgsConstructor
+public class PublishersController {
+
+	private PublisherService publisherService;
+	
+	public List<GetAllPublisherResponse> getAll(){
+		return publisherService.getAll();
+	}
+}

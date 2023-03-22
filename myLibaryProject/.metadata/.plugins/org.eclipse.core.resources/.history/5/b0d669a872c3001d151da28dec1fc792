@@ -1,0 +1,7 @@
+package kemalkeskin.rentABook.business.responses.rentbook;
+
+public class GetAllRentBookResponse {
+
+	private int id;
+	private int user_id;
+}

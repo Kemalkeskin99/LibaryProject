@@ -1,0 +1,46 @@
+package kemalkeskin.rentABook.business.rules.books;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import kemalkeskin.rentABook.business.requests.book.CreateBookRequest;
+import kemalkeskin.rentABook.core.exception.BusinessException;
+import kemalkeskin.rentABook.dataAccess.abstracts.BookRepository;
+import kemalkeskin.rentABook.entitities.concretes.Book;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class BookBusinessRules {
+
+	private BookRepository bookRepository;
+
+	public void IdExists(int id) {
+
+		if (!bookRepository.findById(id).isPresent()) {
+			throw new BusinessException("Id don't Exists");
+		}
+	}
+
+	public void repeatName(String bookName) {
+		List<Book> bookList = bookRepository.findAll();
+		for (Book book : bookList) {
+			if (book.getBookName().equals(bookName)) {
+				throw new BusinessException("book available");
+			}
+		}
+	}
+	
+	public void isStateValid() {
+		CreateBookRequest bookRequest=new CreateBookRequest();
+		if(bookRequest.getState()==1 || bookRequest.getState()==2) {
+			
+		}
+		throw new BusinessException("can only take 1 or 2 values. value 1(rentabled),value 2 (cannot rented)");
+	}
+	
+
+	
+
+}

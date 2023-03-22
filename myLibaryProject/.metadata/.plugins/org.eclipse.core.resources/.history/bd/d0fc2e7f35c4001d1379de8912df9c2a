@@ -1,0 +1,5 @@
+package kemalkeskin.rentABook.business.concretes;
+
+public class PublisherManager {
+
+}

@@ -1,0 +1,7 @@
+package kemalkeskin.rentABook.business.concretes;
+
+import kemalkeskin.rentABook.business.abstracts.PublisherService;
+
+public class PublisherManager implements PublisherService {
+
+}

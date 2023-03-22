@@ -1,0 +1,27 @@
+package kemalkeskin.rentABook.business.concretes;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import kemalkeskin.rentABook.business.abstracts.RentBookService;
+import kemalkeskin.rentABook.business.responses.rentbook.GetAllRentBookResponse;
+import kemalkeskin.rentABook.core.mapper.ModelMapperService;
+import kemalkeskin.rentABook.dataAccess.abstracts.RentBookRepository;
+import kemalkeskin.rentABook.entitities.concretes.RentBook;
+import lombok.AllArgsConstructor;
+@Service
+@AllArgsConstructor
+public class RentBookManager implements RentBookService{
+
+	private RentBookRepository rentBookRepository;
+	private ModelMapperService modelMapperService;
+
+	@Override
+	public List<GetAllRentBookResponse> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

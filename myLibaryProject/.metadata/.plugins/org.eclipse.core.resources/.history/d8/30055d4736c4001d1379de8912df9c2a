@@ -1,0 +1,14 @@
+package kemalkeskin.rentABook.business.concretes;
+
+import org.springframework.stereotype.Service;
+
+import kemalkeskin.rentABook.business.abstracts.PublisherService;
+import kemalkeskin.rentABook.dataAccess.abstracts.PublisherRepository;
+import lombok.AllArgsConstructor;
+@Service
+@AllArgsConstructor
+public class PublisherManager implements PublisherService {
+	
+	private PublisherRepository publisherRepository;
+
+}

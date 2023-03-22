@@ -1,0 +1,5 @@
+package kemalkeskin.rentABook.business.abstracts;
+
+public interface RentBookService {
+
+}

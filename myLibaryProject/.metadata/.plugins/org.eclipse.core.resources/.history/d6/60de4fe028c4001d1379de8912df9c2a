@@ -1,0 +1,17 @@
+package kemalkeskin.rentABook.business.requests.rentbook;
+
+import kemalkeskin.rentABook.business.responses.rentbook.GetAllRentBookResponse;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CreateRentBookRequest {
+
+	private int userId;
+	private String bookName;
+	private String rentDate;
+	private String deliveryDate;
+}

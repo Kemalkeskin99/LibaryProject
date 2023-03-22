@@ -1,0 +1,13 @@
+package kemalkeskin.rentABook.business.concretes;
+
+import org.springframework.stereotype.Service;
+
+import kemalkeskin.rentABook.business.abstracts.RentBookService;
+import kemalkeskin.rentABook.dataAccess.abstracts.RentBookRepository;
+import lombok.AllArgsConstructor;
+@Service
+@AllArgsConstructor
+public class RentBookManager implements RentBookService{
+
+	private RentBookRepository rentBookRepository;
+}

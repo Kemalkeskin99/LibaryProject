@@ -1,0 +1,5 @@
+package kemalkeskin.rentABook.business.rules.books;
+
+public class PublisherBusinessRules {
+
+}

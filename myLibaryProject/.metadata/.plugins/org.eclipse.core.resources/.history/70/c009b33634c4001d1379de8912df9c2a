@@ -1,0 +1,9 @@
+package kemalkeskin.rentABook.dataAccess.abstracts;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import kemalkeskin.rentABook.entitities.concretes.RentBook;
+
+public interface RentBookRepository extends JpaRepository<RentBook, Integer> {
+
+}
